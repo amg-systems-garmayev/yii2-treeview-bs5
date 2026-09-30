@@ -1,0 +1,35 @@
+{
+    "name": "garmayev/yii2-treeview-bs5",
+    "description": "Bootstrap 5 treeview widget for Yii2 with ActiveDataProvider support [extend nhmvienna\\bs5treeview]",
+    "type": "yii2-extension",
+    "keywords": ["yii2", "treeview", "bootstrap5", "widget", "dataprovider"],
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "garmayev",
+            "email": "garmayev@yandex.ru"
+        }
+    ],
+    "require": {
+        "php": ">=7.4.0",
+        "yiisoft/yii2": "~2.0.0",
+        "yiisoft/yii2-bootstrap5": "~2.0.0",
+        "bower-asset/font-awesome": "~4.7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "garmayev\\treeview\\": "src/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true
+        }
+    }
+}

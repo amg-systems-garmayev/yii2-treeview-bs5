@@ -1,0 +1,334 @@
+/*
+ @preserve
+ bstreeview.css
+ Version: 3.0.0 (Bootstrap 5 List Version)
+ Authors: garmayev
+ Copyright 2024
+ License: Apache License 2.0
+*/
+
+.bstreeview {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.375rem;
+    overflow: auto;
+}
+
+/* Список */
+.bstreeview-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-height: 2rem;
+}
+
+/* Элементы списка */
+.bstreeview-item {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Drag-and-drop стили */
+.bstreeview-item.sortable-ghost {
+    opacity: 0.4;
+    background-color: #e9ecef;
+}
+
+.bstreeview-item.sortable-drag {
+    opacity: 0.8;
+    transform: rotate(2deg);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.bstreeview-item.sortable-ghost .bstreeview-node {
+    background-color: #cfe2ff;
+    border: 2px dashed #0d6efd;
+}
+
+.bstreeview-item.sortable-ghost .bstreeview-node * {
+    opacity: 0.5;
+}
+
+/* Placeholder для пустых групп */
+.bstreeview-group.empty-group {
+    min-height: 2rem;
+    background-color: rgba(13,110,253,0.05);
+    border: 2px dashed #0d6efd;
+    border-radius: 0.375rem;
+    margin: 0.25rem 0;
+}
+
+/* Контейнер элемента */
+.bstreeview-node {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+    transition: background-color 0.15s ease-in-out;
+    user-select: none;
+}
+
+.bstreeview-node:hover {
+    background-color: rgba(0,0,0,.02);
+}
+
+.bstreeview-node.expanded {
+    background-color: rgba(13,110,253,.02);
+}
+
+/* Drag handle */
+.bstreeview-node.drag-handle {
+    cursor: grab;
+}
+
+.bstreeview-node.drag-handle:active {
+    cursor: grabbing;
+}
+
+/* Drop target */
+.bstreeview-group.drop-target {
+    background-color: rgba(13,110,253,0.1);
+    border: 2px solid #0d6efd;
+}
+
+/* Drag source */
+.bstreeview-item.drag-source {
+    opacity: 0.5;
+}
+
+/* Drop placeholder */
+.drop-placeholder {
+    height: 2.5rem;
+    background-color: #cfe2ff;
+    border: 2px dashed #0d6efd;
+    border-radius: 0.375rem;
+    margin: 0.25rem 0;
+}
+
+/* Фиксированная ширина для левой части с иконками */
+.bstreeview-left {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    width: calc(2.5rem + (var(--level, 1) - 1) * 1.5rem);
+    min-width: calc(2.5rem + (var(--level, 1) - 1) * 1.5rem);
+}
+
+/* Индентация */
+.bstreeview-indent {
+    display: inline-block;
+    width: 1.5rem;
+    flex-shrink: 0;
+}
+
+/* Иконки */
+.bstreeview-state-icon {
+    margin-right: 0.25rem;
+    width: 1rem;
+    text-align: center;
+    color: #6c757d;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.bstreeview-item-icon {
+    margin-right: 0.5rem;
+    width: 1rem;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.bstreeview-item-icon.fa-folder,
+.bstreeview-item-icon.fa-folder-open {
+    color: #ffc107;
+}
+
+.bstreeview-item-icon.fa-file,
+.bstreeview-item-icon.fa-file-lines {
+    color: #6c757d;
+}
+
+/* Контент узла */
+.bstreeview-content {
+    flex: 1;
+    display: flex;
+    min-width: 0;
+    gap: 1rem;
+}
+
+/* Колонки данных */
+.bstreeview-data-col {
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 0.25rem;
+}
+
+/* Выравнивание текста в колонках */
+.bstreeview-data-col.text-left {
+    text-align: left;
+}
+
+.bstreeview-data-col.text-center {
+    text-align: center;
+}
+
+.bstreeview-data-col.text-right {
+    text-align: right;
+}
+
+/* Заголовок дерева */
+.bstreeview-header {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: #f8f9fa;
+    border-bottom: 2px solid rgba(0,0,0,.125);
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+/* Placeholder для иконок в заголовке */
+.bstreeview-header-left {
+    width: 2.5rem;
+    flex-shrink: 0;
+    margin-right: 0.5rem;
+}
+
+/* Контейнер заголовков колонок */
+.bstreeview-header-content {
+    flex: 1;
+    display: flex;
+    gap: 1rem;
+    min-width: 0;
+}
+
+/* Заголовок колонки */
+.bstreeview-header-col {
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 0.25rem;
+}
+
+.bstreeview-header-col.text-left {
+    text-align: left;
+}
+
+.bstreeview-header-col.text-center {
+    text-align: center;
+}
+
+.bstreeview-header-col.text-right {
+    text-align: right;
+}
+
+/* Группы (вложенные списки) */
+.bstreeview-group {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    display: none;
+    min-height: 2rem;
+}
+
+.bstreeview-group.show {
+    display: block;
+}
+
+/* Уровни вложенности */
+.bstreeview-node[data-level="1"] .bstreeview-left {
+    --level: 1;
+}
+
+.bstreeview-node[data-level="2"] .bstreeview-left {
+    --level: 2;
+}
+
+.bstreeview-node[data-level="3"] .bstreeview-left {
+    --level: 3;
+}
+
+.bstreeview-node[data-level="4"] .bstreeview-left {
+    --level: 4;
+}
+
+.bstreeview-node[data-level="5"] .bstreeview-left {
+    --level: 5;
+}
+
+.bstreeview-node[data-level="6"] .bstreeview-left {
+    --level: 6;
+}
+
+/* Темная тема */
+[data-bs-theme="dark"] .bstreeview {
+    background-color: #212529;
+    border-color: rgba(255,255,255,.125);
+}
+
+[data-bs-theme="dark"] .bstreeview-header {
+    background-color: #2c3034;
+    border-color: rgba(255,255,255,.125);
+    color: #dee2e6;
+}
+
+[data-bs-theme="dark"] .bstreeview-node {
+    border-color: rgba(255,255,255,.05);
+}
+
+[data-bs-theme="dark"] .bstreeview-node:hover {
+    background-color: rgba(255,255,255,.05);
+}
+
+[data-bs-theme="dark"] .bstreeview-node.expanded {
+    background-color: rgba(13,110,253,.1);
+}
+
+[data-bs-theme="dark"] .bstreeview-state-icon {
+    color: #adb5bd;
+}
+
+[data-bs-theme="dark"] .bstreeview-item-icon.fa-file,
+[data-bs-theme="dark"] .bstreeview-item-icon.fa-file-lines {
+    color: #adb5bd;
+}
+
+/* Drag-and-drop в темной теме */
+[data-bs-theme="dark"] .bstreeview-item.sortable-ghost {
+    background-color: #2c3034;
+}
+
+[data-bs-theme="dark"] .bstreeview-item.sortable-ghost .bstreeview-node {
+    background-color: rgba(13,110,253,0.2);
+    border-color: #0d6efd;
+}
+
+[data-bs-theme="dark"] .drop-placeholder {
+    background-color: rgba(13,110,253,0.2);
+    border-color: #0d6efd;
+}
+
+[data-bs-theme="dark"] .bstreeview-group.drop-target {
+    background-color: rgba(13,110,253,0.15);
+    border-color: #0d6efd;
+}
+
+[data-bs-theme="dark"] .bstreeview-group.empty-group {
+    background-color: rgba(13,110,253,0.1);
+    border-color: #0d6efd;
+}
